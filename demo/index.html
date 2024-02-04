@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      :root {
+        --bg-color: #fafafa;
+        --base-gap: 1rem;
+        --base-radius: 8px;
+      }
+
+      body {
+        background: var(--bg-color);
+        font-family: sans-serif;
+      }
+
+      #moji-container {
+        border-radius: var(--base-radius);
+        padding: var(--base-gap);
+        background-color: #CFD8DC;
+        width: min-content;
+      }
+
+      grid-cellector {
+        margin-block-end: var(--base-gap);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="moji-container">
+      <div>
+        <label for="moji-search">Search emojis:</label>
+        <input type="search" name="moji" id="moji-search" />
+      </div>
+      <div id="demo-1"></div>
+      <button>Just a regular button</button>
+    </div>
+
+    <script type="module">
+      import { html, render } from 'lit';
+
+      import '../dist/src/grid-cell.js';
+      import '../dist/src/grid-cellector.js';
+
+      render(
+        html`
+          <grid-cellector columns="5">
+            <grid-cell value=":frog:">🐸</grid-cell>
+            <grid-cell value=":goose:">🪿</grid-cell>
+            <grid-cell value=":sauropod:">🦕</grid-cell>
+            <grid-cell value=":turtle:">🐢</grid-cell>
+            <grid-cell value=":basketball:">🏀</grid-cell>
+            <grid-cell value=":whale2:">🐋</grid-cell>
+            <grid-cell value=":pizza:">🍕</grid-cell>
+            <grid-cell value=":first_quarter_moon_with_face:">🌛</grid-cell>
+            <grid-cell value=":mailbox_with_mail:">📬</grid-cell>
+            <grid-cell value=":hugging_face:">🤗</grid-cell>
+            <grid-cell value=":partying_face:">🥳</grid-cell>
+          </grid-cellector>
+        `,
+        document.querySelector('#demo-1')
+      );
+    </script>
+  </body>
+</html>

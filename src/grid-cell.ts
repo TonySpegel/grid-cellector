@@ -100,8 +100,8 @@ export class GridCell extends LitElement {
     const { lastIndex, xLimit, yLimit } = idx;
     const isFirstIndex = isGridStart(index);
     const isLastIndex = isGridEnd(index, idx);
-    const currentColumn = index[0];
-    const currentRow = index[1];
+    const [currentColumn, currentRow] = index;
+    const [lastX, lastY] = lastIndex;
 
     let nextIndex: CellIndex = [0, 0];
 
@@ -156,7 +156,7 @@ export class GridCell extends LitElement {
       case 'ArrowDown': {
         const lastRow = currentRow === yLimit;
         const lastBeforeRow = currentRow === yLimit - 1;
-        const outOfBounds = currentColumn + 1 >= xLimit;
+        const outOfBounds = currentColumn > lastX && currentRow + 1 >= lastY;
 
         if (lastRow) break;
 
